@@ -1,0 +1,322 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    background: linear-gradient(270deg, #ff00ff, #00ffff, #ff0066, #00ff00);
+    background-size: 800% 800%;
+    animation: neonBG 15s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes neonBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#score-container {
+    position: fixed;
+    top: 20px; /* top-center */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: rgb(234, 7, 7);
+    font-weight: bold;
+    z-index: 10;
+    text-shadow: 0 0 8px #c10707;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 12px;
+}
+.score-popup {
+    position: fixed;
+    font-size: 36px;
+    color: #00FF00;
+    font-weight: bold;
+    font-family: "Arial", sans-serif;
+    text-shadow: 0 0 8px #00FF00;
+    transition: all 1s ease-out;
+    z-index: 15;
+}
+
+
+#pause-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #048aff; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 0 10px #010531;
+    transition: transform 0.2s;
+}
+#pause-btn:hover {transform: scale(1.1);}
+
+#game-container{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    background-color: black;
+    background-image: 
+        linear-gradient(#555 1px, transparent 1px), 
+        linear-gradient(90deg, #555 1px, transparent 1px);
+    background-size: 20px 20px; /* grid matches snake block */
+}
+
+.snake.head{box-shadow:0 0 12px 6px silver;}
+.snake{width:20px;height:20px;position:absolute;}
+.food{width:20px;height:20px;position:absolute;border-radius:50%;}
+#game-over{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.85);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:20;
+    color:white;
+}
+#game-over h1{
+       font-family: Impact, sans-serif;
+    font-size: 102px;
+    color: #05dcf4;
+    text-shadow: 0 0 8px #ff0000, 0 0 16px #ff4500, 0 0 24px #ff6347;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 8px #ff2605, 0 0 16px #f05b05, 0 0 24px #ff6347;
+        transform: scale(1);
+    }
+    50% {
+        text-shadow: 0 0 16px #000000, 0 0 24px #212d2f, 0 0 32px #00ffdd;
+        transform: scale(1.1);
+    }
+    100% {
+        text-shadow: 0 0 8px #ff0000, 0 0 16px #d81818, 0 0 24px #261e1e;
+        transform: scale(1);
+    }
+}
+
+#game-over p {
+    margin-top: 30px;           /* whole line konjam kila */
+    font-size: 36px;
+    font-family: 'Courier New', monospace;
+    color: #00ffe1;
+    display: flex;              /* same line */
+    gap: 10px;                  /* name & score gap */
+    align-items: center;
+}
+
+#game-over p span {
+    font-size: 36px;
+    font-weight: bold;
+    color: #e1ff00;             /* score different color */
+    text-shadow: 0 0 6px #000000, 0 0 12px #000000;
+    animation: scoreGlow 1s ease-in-out infinite alternate;
+}
+
+
+
+/* Restart Button */
+#game-over button {
+    padding: 12px 24px;
+    font-size: 20px;
+    margin-top: 20px; /* slightly lower */
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    box-shadow: 0 0 10px #00bfff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#game-over button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00bfff;
+}
+
+
+
+
+#home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #00bfff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 10;
+}
+#home-btn:hover { transform: scale(1.1); }
+
+
+/*end*/
+
+
+
+/* Featured container as rectangle + grid */
+.featured-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* main game + 2 columns of coming soon */
+    grid-auto-rows: 220px;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Snake Game Rectangle bigger */
+.featured-game {
+    grid-column: span 2; /* Main Snake rectangle takes 2 columns */
+    position: relative;
+}
+
+.featured-game img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Play button */
+.play-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(0, 221, 255);
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Coming Soon Cards */
+.coming-soon-card {
+    position: relative;
+    background: #222;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.coming-soon-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.coming-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.6);
+    color: #ff0;
+    padding: 6px 10px;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Reset some defaults */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #111; /* dark gaming look */
+    color: #1effce;
+}
+
+/* Logo */
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation links */
+header nav a {
+    color: #7b7b7b;
+    margin-left: 20px;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+/* Hover effect */
+header nav a:hover {
+    color: #00ffd5; /* neon blue effect */
+    transform: scale(1.1);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header nav {
+        margin-top: 10px;
+    }
+    header nav a {
+        display: block;
+        margin: 5px 0;
+    }
+}
+html, body {
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden; /* side scroll avoid */
+}
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* 🔥 ACTIVE = light */
+nav a.active {
+    color: cyan;
+    background: rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 10px cyan;
+}
+
+/* Hover */
+nav a:hover {
+    color: cyan;
+}
+
+
+
+
+
+/*end*/
+ 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snake Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="score-container">
+  Score: <span id="score">0</span> | High Score: <span id="high-score">0</span>
+</div>
+
+<button id="pause-btn" title="Pause/Resume">⏸️</button>
+
+
+
+<div id="game-container"></div>
+
+<div id="game-over">
+  <h1>GAME OVER!</h1>
+  <p> SCORE: <span id="final-score"></span></p>
+  <button onclick="startGame()">Restart</button>
+  <button id="home-btn">🏠 Home</button>
+</div>
+
+<!-- Sound Effects -->
+<audio id="eat-sound" src="eat.mp3"></audio>
+<audio id="gameover-sound" src="gameover.mp3"></audio>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
